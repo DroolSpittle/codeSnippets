@@ -15,3 +15,11 @@ def series_sum(n):
         result = result + (1/(4 +sum([3] * (n - 2))))
         n = n - 1
     return '{:.2f}'.format(result)
+
+
+############
+#Better Way#
+############
+
+def series_sum(n):
+    return '{:.2f}'.format(sum(1.0/(3 * i + 1) for i in range(n)))
