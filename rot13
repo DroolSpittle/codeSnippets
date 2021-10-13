@@ -18,3 +18,11 @@ def rot13(message):
 
 def rot13(message):
     return message.translate(message.maketrans('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz','NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'))
+
+
+import string
+from string import maketrans, lowercase as lc, uppercase as uc
+
+def rot13(message):
+    tran = maketrans(lc + uc, lc[13:] + lc[:13] + uc[13:] + uc[:13])
+    return message.translate(tran)
