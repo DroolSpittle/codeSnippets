@@ -1,0 +1,30 @@
+#Find the first substring of s that has the matching number of vowels with k
+
+def findSubstring(s, k):
+    vowels = {"a", "e", "i", "o", "u"}
+    substrings = []
+    if any(char in vowels for char in s):
+        substrings = [s[i: j] for i in range(len(s)) for j in range(i + 1, len(s) + 1)]
+        substringsCopy = []
+        for string in substrings:
+            if len(string) >= k:
+                substringsCopy.append(string)
+        substrings = substringsCopy
+        substringsCopy = []
+        
+        for string in substrings:
+            vowelCount = 0
+            for char in string:
+                if char in vowels:
+                    vowelCount += 1
+            if vowelCount == k:
+                substringsCopy.append(string)
+        substrings = substringsCopy
+        return substrings[0]
+    else:
+        return "Not Found!"
+    
+    
+s = "Chatbecrazy"
+k = 3
+print(findSubstring(s, k))
