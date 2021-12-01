@@ -1,0 +1,48 @@
+#Company is counting the cost of how many laptops are made per day, dailyCount is the quota on how many "legal" laptops are made. Illegal laptops are counted in cost
+
+
+def maxCost(cost, labels, dailyCount):
+    if dailyCount > labels.count("legal"):
+        return 0
+    
+    costIt = 0
+    labelsIt = 0
+    days = 1
+    dayCost = 0
+    maxCost = 0
+    daysToManufacture = int(labels.count("legal")/dailyCount)
+    
+    if days == daysToManufacture:
+        legalCount = 0
+        while legalCount <  dailyCount:
+            maxCost = maxCost + cost[costIt]
+            costIt += 1
+            if labels[labelsIt] == "legal":
+                legalCount += 1
+            labelsIt += 1
+        return maxCost
+    
+    else:     
+        while days <= daysToManufacture:
+            legalCount = 0
+            while legalCount <  dailyCount:
+                dayCost = dayCost + cost[costIt]
+                costIt += 1
+                if labels[labelsIt] == "legal":
+                    legalCount += 1
+                labelsIt += 1
+            if maxCost < dayCost:
+                maxCost = dayCost
+            dayCost = 0
+            days += 1
+
+    return maxCost
+
+
+
+
+
+cost = [2, 5, 3, 11, 1]
+labels = ["legal", "illegal", "legal", "illegal", "legal"]
+dailyCount = 1
+print(maxCost(cost, labels, dailyCount))    
