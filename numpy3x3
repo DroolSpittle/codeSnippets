@@ -1,0 +1,12 @@
+#using numpy take an input of "1 2 3 4 5 6 7 8 9" and make it print into a 3x3 grid
+
+
+
+import numpy
+
+numbers = input().split(' ')
+for i in range(0 ,len(numbers)):
+    numbers[i] = int(numbers[i])
+my_3D_array = numpy.array(numbers)
+print(numpy.reshape(my_3D_array, (3, 3)))
+
