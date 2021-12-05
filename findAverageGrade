@@ -1,0 +1,26 @@
+#Find Average of a student's scores stored in a dict
+
+def findAverage(name, studentDict):
+    average = 0
+    total = 0
+    i = 0
+    n = 0
+    for item in studentDict[name]:
+        n += 1
+    while i < n:
+        total = total + studentDict[name][i]
+        i += 1
+    average = total/n    
+    
+    return "{:.2f}".format(average)
+
+
+if __name__ == '__main__':
+    n = int(input())
+    student_marks = {}
+    for _ in range(n):
+        name, *line = input().split()
+        scores = list(map(float, line))
+        student_marks[name] = scores
+    query_name = input()
+    print(findAverage(query_name, student_marks))
